@@ -22,4 +22,13 @@ AEFX_SuiteScoper<AEGP_ComputeCacheSuite1> cacheSuite = AEFX_SuiteScoper<AEGP_Com
 ```C++
 AEGP_CCComputeClassIdP id = "adobe.ae.effect.test_effect.cache_v_1";
 AEGP_ComputeCacheCallbacks *test;
+
+(*cacheSuite->AEGP_ClassRegister)(id, test);
 ```
+
+#### Global Setdown
+### As well as registering our future cache data, we need to de-register it when the plugin is deleted
+```C++
+ERR(cacheSuite->AEGP_ClassUnregister(id));
+```
+
